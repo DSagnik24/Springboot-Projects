@@ -47,11 +47,16 @@ public class SurveyService {
         }
         return null;
     }
-    public List<Question> retrieveQuestions(String surveyId) {
+    public List<Question> retrieveQuestions(String surveyId, String questionId) {
         Survey survey = retrieveSurvey(surveyId);
 
         if (survey == null) {
             return null;
+        }
+        for (Question question : survey.getQuestions()) {
+            if (question.getId().equals(questionId)) {
+                return (List<Question>) question;
+            }
         }
 
         return survey.getQuestions();
