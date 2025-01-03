@@ -47,7 +47,7 @@ public class SurveyService {
         }
         return null;
     }
-    public List<Question> retrieveQuestions(String surveyId, String questionId) {
+    public List<Question> retrieveQuestions(String surveyId) {
         Survey survey = retrieveSurvey(surveyId);
 
         if (survey == null) {
