@@ -62,6 +62,7 @@ public class Question {
         return result;
     }
 
+    @Override
     public boolean equals(Object obj){
         if(this == obj)
             return true;
@@ -71,11 +72,8 @@ public class Question {
             return false;
         Question other = (Question) obj;
         if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+            return other.id == null;
+        } else return id.equals(other.id);
     }
 
 }

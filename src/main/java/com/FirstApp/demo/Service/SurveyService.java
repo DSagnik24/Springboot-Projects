@@ -3,6 +3,8 @@ package com.FirstApp.demo.Service;
 import com.FirstApp.demo.model.Question;
 import com.FirstApp.demo.model.Survey;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -54,6 +56,7 @@ public class SurveyService {
             return null;
         }
         for (Question question : survey.getQuestions()) {
+            String questionId = " ";
             if (question.getId().equals(questionId)) {
                 return (List<Question>) question;
             }
@@ -61,6 +64,7 @@ public class SurveyService {
 
         return survey.getQuestions();
     }
+    @GetMapping(path = "/surveys/{surveyId}/questions/{questionId}")
     public Question retrieveQuestion(String surveyId, String questionId){
         Survey survey = retrieveSurvey(surveyId);
 
